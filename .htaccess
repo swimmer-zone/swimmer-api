@@ -1,0 +1,21 @@
+RewriteEngine On
+RewriteCond %{HTTP:X-Forwarded-Proto} !https
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+Options -MultiViews
+
+Header add Access-Control-Allow-Origin: "*"
+Header add Access-Control-Allow-Methods: "*"
+Header add Access-Control-Allow-Headers: "*"
+
+RewriteCond %{REQUEST_URI} !^/assets/(.*)$
+RewriteRule ^images/(.*)$ /assets/images/$1 [L,R=301]
+RewriteRule ^media/(.*)$ /assets/media/$1 [L,R=301]
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule . /index.php [L,NC,QSA]
+</IfModule>
