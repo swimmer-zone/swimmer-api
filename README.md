@@ -130,7 +130,6 @@ ALTER TABLE `websites`
 
 ## Todo
 
-* Add model for images
 * Update CORS to be able to work with **react-admin**
 * Add install script to create the tables automatically upon initialization
 * Add migrate script to automatically create a table upon adding a model

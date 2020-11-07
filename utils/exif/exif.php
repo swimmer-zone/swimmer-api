@@ -15,6 +15,10 @@ class Exif
 	 */
 	public function get_gps_data(string $full_image_path): array
 	{
+		if (!in_array(mime_content_type($full_image_path), ['image/jpeg', 'image/tiff'])) {
+			return [];
+		}
+
 		$raw_exif = exif_read_data($full_image_path, 0, true);
 
 	    if (isset($raw_exif['GPS']['GPSLatitude']) && isset($raw_exif['GPS']['GPSLongitude'])) { 
@@ -55,6 +59,10 @@ class Exif
 	 */
 	public function get_exif_info(string $full_image_path): array
 	{
+		if (!in_array(mime_content_type($full_image_path), ['image/jpeg', 'image/tiff'])) {
+			return [];
+		}
+		
 		$raw_exif = exif_read_data($full_image_path, 0, true);
 
 		return [

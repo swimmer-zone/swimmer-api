@@ -9,36 +9,35 @@ class Image extends AbstractModel implements ModelInterface
 {
 	protected $table = 'images';
 
-	/**
-	 * @inheritDoc
-	 */
-	public function get(array $filter = [], array $sort = [], array $limit = []): array
-	{
+    /**
+     * @inheritDoc
+     */
+    public function get(array $filter = [], array $sort = [], array $limit = []): array
+    {
+        $images = [];
         $exif = new Exif;
 
         if (isset($filter['directory'])) {
-            $d = dir($filter['directory']);
+            $dir = $filter['directory'];
         } else {
-            $d = dir(Config::IMAGE_PATH);
+            $dir = Config::IMAGE_PATH;
         }
 
-        $images = [];
-        while (false !== ($entry = $d->read())) {
-
+        $d = dir($dir);
+        while (false !== $entry = $d->read()) {
             if (!in_array($entry, array('.', '..'))) {
-                $path = Config::IMAGE_PATH . $entry;
-
-                if (is_dir($_SERVER['DOCUMENT_ROOT'] . '/../www/' . $path)) {
-                    $images[Config::IMAGE_URL . $entry] = [
+                if (is_dir($dir . '/' . $entry)) {
+                    $images[Config::IMAGE_URL . '/' . $dir . '/' . $entry] = [
                         'type' => 'directory',
-                        'content' => $this->get(['directory' => $path], $sort, $limit)
+                        'contents' => $this->get(['directory' => $dir . '/' . $entry], $sort, $limit)
                     ];
                 }
-                else {
-                    $images[Config::IMAGE_URL . $entry] = [
-                        'type' => mime_content_type($_SERVER['DOCUMENT_ROOT'] . '/../www/' . $path),
-                        // 'gps'  => $exif->get_gps_data($path),
-                        // 'exif' => $exif->get_exif_info($path)
+                else{
+                    $images[Config::IMAGE_URL . '/' . $dir . '/' . $entry] = [
+                        'type' => mime_content_type($dir . '/' . $entry),
+                        'name' => $entry,
+                        'gps'  => $exif->get_gps_data($dir . '/' . $entry),
+                        'exif' => $exif->get_exif_info($dir . '/' . $entry)
                     ];
                 }
             }
@@ -46,9 +45,9 @@ class Image extends AbstractModel implements ModelInterface
         $d->close();
 
         ksort($images);
-
+       
         return $images;
-	}
+    }
 
 	/**
 	 * @inheritDoc
