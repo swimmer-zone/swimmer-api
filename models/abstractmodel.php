@@ -2,15 +2,17 @@
 
 namespace Swimmer\Models;
 
+use Swimmer\Utils\Config;
+
 abstract class AbstractModel
 {
 	protected $sql;
     protected $db = [
-        'host' => DB_HOST,
-        'user' => DB_USER,
-        'pass' => DB_PASS,
-        'db'   => DB_NAME,
-        'url'  => DB_LINK
+        'host' => Config::DB_HOST,
+        'user' => Config::DB_USER,
+        'pass' => Config::DB_PASS,
+        'db'   => Config::DB_NAME,
+        'url'  => Config::DB_LINK
     ];
 
 	/**

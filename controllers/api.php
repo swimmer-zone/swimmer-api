@@ -2,6 +2,8 @@
 
 namespace Swimmer\Controllers;
 
+use Swimmer\Utils\Config;
+
 /**
  * class Api
  * @author Swimmer 2020
@@ -11,8 +13,6 @@ class Api
 {
     public $project;
 
-    private $debug = false;
-    private $debug_email = 'yupsie@gmail.com';
     private $sql;
     private $url_segments = [];
 
@@ -30,6 +30,7 @@ class Api
     public function __construct($url, $referer)
     {
         $this->blogModel     = new \Swimmer\Models\Blog;
+        $this->imageModel    = new \Swimmer\Models\Image;
         $this->linkModel     = new \Swimmer\Models\Link;
         $this->templateModel = new \Swimmer\Models\Template;
         $this->trackModel    = new \Swimmer\Models\Track;
@@ -100,6 +101,15 @@ class Api
 	}
 
     /**
+     * @see https://sww.tf/image/
+     * @return array
+     */
+    private function image(): array
+    {
+        return $this->imageModel->get(['project' => $this->project]);
+    }
+
+    /**
      * @see https://sww.tf/links/
      * @return array
      */
@@ -162,7 +172,7 @@ class Api
             }
         }
 
-        if (count($errors) < 1 && !mail(DEBUG ? DEBUG_MAIL : $template['to'], $template['subject'],
+        if (count($errors) < 1 && !mail(Config::DEBUG ? Config::DEBUG_MAIL : $template['to'], $template['subject'],
             vsprintf('<style type="text/css">' . $template['css'] . '</style>' . $template['body'], $request),
             sprintf(implode("\r\n", $headers), $request['email'] ?? $template['reply_to'])
         )) {

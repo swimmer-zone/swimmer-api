@@ -33,8 +33,6 @@ class Link extends AbstractModel implements ModelInterface
 
 Where `links` is the name of the table, the `$fields` array contains all the columns and the model name is the singular version of the table name, starting with a capital.
 
-For now, the new model has to be included in `index.php`.
-
 
 ## Tables
 
@@ -136,4 +134,3 @@ ALTER TABLE `websites`
 * Update CORS to be able to work with **react-admin**
 * Add install script to create the tables automatically upon initialization
 * Add migrate script to automatically create a table upon adding a model
-* Add autoloader

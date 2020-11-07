@@ -2,7 +2,8 @@
 
 namespace Swimmer\Models;
 
-use \getID3;
+use Swimmer\Utils\Config;
+use Swimmer\Utils\Getid3\Getid3;
 
 class Track extends AbstractModel implements ModelInterface
 {
@@ -13,10 +14,8 @@ class Track extends AbstractModel implements ModelInterface
 	 */
 	public function get(array $filter = [], array $sort = [], array $limit = []): array
 	{
-        $url = 'https://' . $_SERVER['HTTP_HOST'] . '/';
-        $i = 0;
         $tracks_per_album = [];
-        $getid3 = new getID3;
+        $getid3 = new Getid3;
 
         if ($filter['project'] == 'swimmer') {
             $albums = ['swimmer/collectifest', 'swimmer/the_beach', 'swimmer/the_pool'];
@@ -31,10 +30,9 @@ class Track extends AbstractModel implements ModelInterface
         ];
 
         foreach ($albums as $album) {
-            $d = dir(MEDIA_PATH . $album);
+            $d = dir(Config::MEDIA_PATH . $album);
 
             $tracks = [];
-            $i = 0;
             while (false !== ($entry = $d->read())) {
 
                 if (!in_array($entry, array('.', '..'))) {
@@ -43,8 +41,8 @@ class Track extends AbstractModel implements ModelInterface
                     if (isset($getid3->info['tags']['id3v1'])) {
                         $tags = $getid3->info['tags']['id3v1'];
 
-                        $tracks[API_URL . $getid3->filename] = [
-                            'filename'         => API_URL . $getid3->filename,
+                        $tracks[Config::API_URL . $getid3->filename] = [
+                            'filename'         => Config::API_URL . $getid3->filename,
                             'playtime_string'  => $getid3->info['playtime_string'],
                             'playtime_seconds' => round($getid3->info['playtime_seconds']),
                             'title'            => $tags['title'][0] ?? '',
@@ -70,7 +68,7 @@ class Track extends AbstractModel implements ModelInterface
                 'tracks'      => $tracks,
                 'title'       => ucwords(str_replace(['swimmer/', '_'], ['', ' '], $album)),
                 'title_lower' => $album,
-                'cover'       => MEDIA_URL . $album . '/cover.jpg',
+                'cover'       => Config::MEDIA_URL . $album . '/cover.jpg',
                 'comment'     => $album_comments[$album] ?? ''
             ];
         }
