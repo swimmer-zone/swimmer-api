@@ -5,7 +5,20 @@ namespace Swimmer\Models;
 class Blog extends AbstractModel implements ModelInterface
 {
 	protected $table = 'blogs';
-    protected $fields = ['id', 'title', 'body', 'concept', 'created_at', 'updated_at'];
+    protected $fields = [
+        'title' => [
+            'type'     => 'varchar',
+            'required' => true
+        ],
+        'body' => [
+            'type'     => 'text',
+            'required' => true
+        ],
+        'concept' => [
+            'type'     => 'int',
+            'required' => true
+        ]
+    ];
 
 	/**
 	 * @param string $slug

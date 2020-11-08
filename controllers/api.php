@@ -91,7 +91,7 @@ class Api
     }
 
     /**
-     * @see https://sww.tf/blog/{title}
+     * @see https://sww.tf/blog/{title}/
      * @param string $slug
      * @return array
      */
@@ -134,6 +134,23 @@ class Api
     private function tracks(): array
     {
         return $this->trackModel->get(['project' => $this->project]);
+    }
+
+    /**
+     * @see https://sww.tf/create/{table}/
+     * @return array
+     */
+    private function create($table): array
+    {
+        $model     = $table . 'Model';
+        $namespace = '\\Swimmer\\Models\\' . ucfirst($table);
+
+        $this->$model = new $namespace;
+        
+        if ($this->$model->create()) {
+            return ['Table created successfully'];
+        }
+        return ['Table creation failed' => $this->$model->get_errors()];
     }
 
     /**
