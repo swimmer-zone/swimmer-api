@@ -57,7 +57,7 @@ class Api
     {
         $method = trim($this->url_segments[0], '/');
         $param = isset($this->url_segments[1]) ? trim($this->url_segments[1], '/') : false;
-
+echo 'abc';
         if (method_exists($this, $method)) {
             if ($param) {
                 $array = $this->{$method}($param);
@@ -69,6 +69,7 @@ class Api
         else {
             $array = $this->error();
         }
+        header('X-Total-Count: ' . count($array));
         return json_encode($array);
     }
 
@@ -79,61 +80,6 @@ class Api
     {
         header('HTTP/1.0 404 Not Found');
         return ['Error 404'];
-    }
-
-    /**
-     * @see https://sww.tf/blogs/
-     * @return array
-     */
-    private function blogs(): array
-    {
-        return $this->blogModel->get(['concept' => false]);
-    }
-
-    /**
-     * @see https://sww.tf/blog/{title}/
-     * @param string $slug
-     * @return array
-     */
-	private function blog(string $slug): array
-	{
-        return $this->blogModel->get_by_slug($slug);
-	}
-
-    /**
-     * @see https://sww.tf/image/
-     * @return array
-     */
-    private function image(): array
-    {
-        return $this->imageModel->get(['project' => $this->project]);
-    }
-
-    /**
-     * @see https://sww.tf/links/
-     * @return array
-     */
-    private function links(): array
-    {
-        return $this->linkModel->get(['is_portfolio' => false]);
-    }
-
-    /**
-     * @see https://sww.tf/portfolio/
-     * @return array
-     */
-    private function portfolio(): array
-    {
-        return $this->linkModel->get(['is_portfolio' => true]);
-    }
-
-    /**
-     * @see https://sww.tf/tracks/
-     * @return array
-     */
-    private function tracks(): array
-    {
-        return $this->trackModel->get(['project' => $this->project]);
     }
 
     /**
@@ -211,5 +157,100 @@ class Api
         return [
             'sent' => true
         ];
+    }
+
+
+
+    /**
+     * @see https://sww.tf/blogs/
+     * @return array
+     */
+    private function blogs(): array
+    {
+        return $this->blogModel->get(['concept' => false]);
+    }
+
+    /**
+     * @see https://sww.tf/blog/{title}/
+     * @param string $slug
+     * @return array
+     */
+	private function blog(string $slug): array
+	{
+        return $this->blogModel->get_by_slug($slug);
+	}
+
+    /**
+     * @see https://sww.tf/image/
+     * @return array
+     */
+    private function image(): array
+    {
+        return $this->imageModel->get(['project' => $this->project]);
+    }
+
+    /**
+     * @see https://sww.tf/links/
+     * @return array
+     */
+    private function links(): array
+    {
+        return $this->linkModel->get(['is_portfolio' => false]);
+    }
+
+    /**
+     * @see https://sww.tf/portfolio/
+     * @return array
+     */
+    private function portfolio(): array
+    {
+        return $this->linkModel->get(['is_portfolio' => true]);
+    }
+
+    /**
+     * @see https://sww.tf/blogs/
+     * @return array
+     */
+    private function templates(): array
+    {
+        return $this->templateModel->get();
+    }
+
+    /**
+     * @see https://sww.tf/blog/{title}/
+     * @param string $slug
+     * @return array
+     */
+    private function template(string $slug): array
+    {
+        return $this->templateModel->get_by_slug($slug);
+    }
+
+    /**
+     * @see https://sww.tf/tracks/
+     * @return array
+     */
+    private function tracks(): array
+    {
+        return $this->trackModel->get(['project' => $this->project]);
+    }
+
+    /**
+     * @see https://sww.tf/blogs/
+     * @return array
+     */
+    private function websites(): array
+    {
+        return $this->websiteModel->get();
+    }
+
+    /**
+     * @see https://sww.tf/blog/{title}/
+     * @param string $slug
+     * @return array
+     */
+    private function website(string $slug): array
+    {
+        return $this->websiteModel->get_by_slug($slug);
     }
 }

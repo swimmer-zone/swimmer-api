@@ -5,18 +5,22 @@ namespace Swimmer\Models;
 class Blog extends AbstractModel implements ModelInterface
 {
 	protected $table = 'blogs';
-    protected $fields = [
+    public $fields = [
         'title' => [
             'type'     => 'varchar',
-            'required' => true
+            'required' => true,
+            'field'    => 'text'
         ],
         'body' => [
             'type'     => 'text',
-            'required' => true
+            'required' => true,
+            'field'    => 'editor',
+            'hide'     => true
         ],
         'concept' => [
             'type'     => 'int',
-            'required' => true
+            'required' => true,
+            'field'    => 'boolean'
         ]
     ];
 

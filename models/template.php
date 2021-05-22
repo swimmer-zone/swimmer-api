@@ -5,38 +5,46 @@ namespace Swimmer\Models;
 class Template extends AbstractModel implements ModelInterface
 {
 	protected $table = 'templates';
-	protected $fields = [
+	public $fields = [
 		'title' => [
             'type'     => 'varchar',
-            'required' => true
+            'required' => true,
+            'field'    => 'text'
         ],
         'subject' => [
             'type'     => 'varchar',
-            'required' => true
+            'required' => true,
+            'field'    => 'text'
         ],
         'body' => [
             'type'     => 'text',
-            'required' => true
+            'required' => true,
+            'field'    => 'editor'
         ],
         'css' => [
             'type'     => 'text',
-            'required' => true
+            'required' => true,
+            'field'    => 'textarea'
         ],
         'to' => [
             'type'     => 'varchar',
-            'required' => true
+            'required' => true,
+            'field'    => 'text'
         ],
         'reply_to' => [
             'type'     => 'varchar',
-            'required' => true
+            'required' => true,
+            'field'    => 'text'
         ],
         'fields' => [
             'type'     => 'text',
-            'required' => true
+            'required' => true,
+            'field'    => 'text'
         ],
         'required_fields' => [
             'type'     => 'text',
-            'required' => true
+            'required' => true,
+            'field'    => 'text'
         ]
     ];
 }

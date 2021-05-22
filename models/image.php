@@ -8,6 +8,13 @@ use Swimmer\Utils\Exif\Exif;
 class Image extends AbstractModel implements ModelInterface
 {
 	protected $table = 'images';
+    public $fields = [
+        'title' => [
+            'type'     => 'varchar',
+            'required' => true,
+            'field'    => 'file'
+        ]
+    ];
 
     /**
      * @inheritDoc
@@ -25,7 +32,7 @@ class Image extends AbstractModel implements ModelInterface
 
         $d = dir($dir);
         while (false !== $entry = $d->read()) {
-            if (!in_array($entry, array('.', '..'))) {
+            if (!in_array($entry, ['.', '..'])) {
                 if (is_dir($dir . '/' . $entry)) {
                     $images[Config::IMAGE_URL . '/' . $dir . '/' . $entry] = [
                         'type' => 'directory',

@@ -5,7 +5,7 @@ namespace Swimmer\Models;
 class Website extends AbstractModel implements ModelInterface
 {
 	protected $table = 'websites';
-	protected $fields = [
+	public $fields = [
 		'title' => [
             'type'     => 'varchar',
             'required' => true

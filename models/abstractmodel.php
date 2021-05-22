@@ -15,6 +15,7 @@ abstract class AbstractModel
         'url'  => Config::DB_LINK
     ];
     protected $errors;
+    public $fields = [];
 
 	/**
 	 * @inheritDoc
@@ -72,7 +73,7 @@ abstract class AbstractModel
 
         while ($row = $result->fetch_assoc()) {
         	$row = array_map('utf8_decode', $row);
-            $output[$row['id']] = $row;
+            $output[] = $row;
         }
         return $output;
 	}
@@ -82,7 +83,7 @@ abstract class AbstractModel
 	 */
 	public function get_by_id(int $id): array
 	{
-        return $this->get(['id' => $id])[$id];
+        return $this->get(['id' => $id])[0];
 	}
 
 	/**

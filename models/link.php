@@ -5,22 +5,26 @@ namespace Swimmer\Models;
 class Link extends AbstractModel implements ModelInterface
 {
 	protected $table = 'links';
-	protected $fields = [
+	public $fields = [
 		'title' => [
             'type'     => 'varchar',
-            'required' => true
+            'required' => true,
+            'field'    => 'text'
         ],
         'url' => [
             'type'     => 'varchar',
-            'required' => true
+            'required' => true,
+            'field'    => 'text'
         ],
         'is_portfolio' => [
             'type'     => 'int',
-            'required' => true
+            'required' => true,
+            'field'    => 'boolean'
         ],
         'sort' => [
             'type'     => 'int',
-            'required' => true
+            'required' => true,
+            'field'    => 'number'
         ]
     ];
 }
