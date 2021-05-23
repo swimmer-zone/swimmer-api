@@ -1,0 +1,179 @@
+// Variables
+$purple: #6c6eec;
+$purple-dark: #5c5edc;
+$dark: #4a4b50;
+$quotes: #5c5d62;
+$modal: #6a6b70;
+$code: #aaaaaa;
+$light: #dddddd;
+$white: #ffffff;
+$black: #000000;
+$lighter: #f8f8f8;
+
+$soundcloud: #ff5500;
+$youtube: #e62117;
+$instagram: #ee583f;
+$linkedin: #0077B5;
+$twitter: #1da1f2;
+$github: #fafbfc;
+
+* {
+	box-sizing: border-box;
+	padding: 10px;
+	font-family: 'Open Sans', sans-serif;
+}
+html,
+body {
+	margin: 0;
+	padding: 0;
+	overflow-x: hidden;
+}
+header {
+	width: 100vw;
+	height: 12vh;
+	position: fixed;
+	background: linear-gradient(to bottom, $purple, $purple-dark);
+	color: $white;
+	letter-spacing: 2px;
+
+	svg {
+		display: inline-block;
+		width: 14vw;
+		margin-top: -14px;
+	}
+	h1 {
+		display: inline-block;
+	    margin: 0 10px;
+	    padding: 30px 0 0 50px;
+	    vertical-align: top;
+	}
+}
+aside {
+	display: inline-block;
+	width: calc(16vw - 20px);
+	height: 88vh;
+	position: fixed;
+	top: 12vh;
+	background-color: $purple;
+	vertical-align: top;
+
+	ul {
+		list-style-type: none;
+		margin-bottom: 320px;
+
+		li {
+			display: block;
+			margin-left: 0;
+			text-align: center;
+
+			&:hover {
+				background-color: rgba(255, 255, 255, 0.5);
+			}
+			a {
+				display: block;
+				width: 100%;
+				text-decoration: none;
+				color: black;
+				font-weight: bold;
+			}
+		}
+	}
+	p {
+		text-align: center;
+		color: $white;
+
+		a {
+			text-decoration: none;
+			color: $white;
+		}
+	}
+}
+section {
+	display: inline-block;
+	width: calc(84vw - 20px);
+	vertical-align: top;
+	margin-top: calc(12vh + 10px);
+	margin-left: calc(16vw + 10px);
+
+	table {
+		width: 100%;
+
+		th {
+			background-color: $light;
+		}
+		td {
+			background-color: $lighter;
+
+			&.id {
+				text-align: right;
+			}
+			&.edit,
+			&.delete {
+				width: 32px;
+
+				a {
+					display: block;
+					width: 100%;
+
+					svg {
+						width: 24px;
+						height: 24px;
+						padding: 0;
+
+						path {
+							fill: $purple;
+						}
+					}
+
+					&:hover path {
+						fill: $purple-dark;
+					}
+				}
+			}
+		}
+	}
+	form {
+		table td:nth-child(1) {
+			width: 16%;
+			text-align: right;
+			vertical-align: top;
+		}
+		table td:nth-child(2) {
+			width: 84%;
+			text-align: left;
+
+			*:not([type=checkbox]) {
+				width: 100%;
+				border: 1px solid $light;
+				box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.05) inset;
+			}
+		}
+		textarea {
+			height: 200px;
+
+			&.rich-text {
+				height: 400px;
+			}
+		}
+		button[type=submit] {
+			background: none;
+			width: 64px;
+			border: 0;
+			cursor: pointer;
+
+			svg {
+				width: 48px;
+				height: 48px;
+				padding: 0;
+
+				path {
+					fill: $purple;
+				}
+			}
+
+			&:hover path {
+				fill: $purple-dark;
+			}
+		}
+	}
+}

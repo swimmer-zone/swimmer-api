@@ -14,6 +14,11 @@ class Album extends AbstractModel implements ModelInterface
             'required' => true,
             'field'    => 'text'
         ],
+        'title_lower' => [
+            'type'     => 'varchar',
+            'required' => true,
+            'field'    => 'text'
+        ],
         'cover' => [
             'type'     => 'varchar',
             'required' => true,
@@ -22,7 +27,8 @@ class Album extends AbstractModel implements ModelInterface
         'comment' => [
             'type'     => 'text',
             'required' => false,
-            'field'    => 'textarea'
+            'field'    => 'textarea',
+            'hide'     => true
         ],
         'artist' => [
             'type'     => 'varchar',

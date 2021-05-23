@@ -57,7 +57,7 @@ class Api
     {
         $method = trim($this->url_segments[0], '/');
         $param = isset($this->url_segments[1]) ? trim($this->url_segments[1], '/') : false;
-echo 'abc';
+
         if (method_exists($this, $method)) {
             if ($param) {
                 $array = $this->{$method}($param);

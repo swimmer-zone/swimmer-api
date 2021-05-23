@@ -8,23 +8,28 @@ class Website extends AbstractModel implements ModelInterface
 	public $fields = [
 		'title' => [
             'type'     => 'varchar',
-            'required' => true
+            'required' => true,
+            'field'    => 'text'
         ],
         'identifier' => [
             'type'     => 'varchar',
-            'required' => true
+            'required' => true,
+            'field'    => 'text'
         ],
         'repository' => [
             'type'     => 'varchar',
-            'required' => true
+            'required' => true,
+            'field'    => 'text'
         ],
         'url' => [
             'type'     => 'varchar',
-            'required' => true
+            'required' => true,
+            'field'    => 'text'
         ],
         'debug' => [
             'type'     => 'int',
-            'required' => true
+            'required' => true,
+            'field'    => 'boolean'
         ]
     ];
 }

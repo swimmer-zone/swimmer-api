@@ -19,12 +19,14 @@ class Template extends AbstractModel implements ModelInterface
         'body' => [
             'type'     => 'text',
             'required' => true,
-            'field'    => 'editor'
+            'field'    => 'editor',
+            'hide'     => true
         ],
         'css' => [
             'type'     => 'text',
             'required' => true,
-            'field'    => 'textarea'
+            'field'    => 'textarea',
+            'hide'     => true
         ],
         'to' => [
             'type'     => 'varchar',
@@ -39,12 +41,14 @@ class Template extends AbstractModel implements ModelInterface
         'fields' => [
             'type'     => 'text',
             'required' => true,
-            'field'    => 'text'
+            'field'    => 'text',
+            'hide'     => true
         ],
         'required_fields' => [
             'type'     => 'text',
             'required' => true,
-            'field'    => 'text'
+            'field'    => 'text',
+            'hide'     => true
         ]
     ];
 }

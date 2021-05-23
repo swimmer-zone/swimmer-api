@@ -1,51 +1,115 @@
-:root {
-	--purple: #6c6eec;
-	--purple-dark: #5c5edc;
-	--dark: #4a4b50;
-	--quotes: #5c5d62;
-	--modal: #6a6b70;
-	--code: #aaaaaa;
-	--light: #dddddd;
-	--white: #ffffff;
-	--black: #000000;
-
-	--soundcloud: #ff5500;
-	--youtube: #e62117;
-	--instagram: #ee583f;
-	--linkedin: #0077B5;
-	--twitter: #1da1f2;
-	--github: #fafbfc;
-}
 * {
-	box-sizing: border-box;
-	margin: 10px;
-	padding: 10px;
-	font-family: 'Open Sans', sans-serif;
-}
+  box-sizing: border-box;
+  padding: 10px;
+  font-family: 'Open Sans', sans-serif; }
+
 html,
 body {
-	margin: 0;
-	padding: 0;
-}
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; }
+
 header {
-	width: 100vw;
-	height: 8vh;
-	background-color: var(--purple);
-	color: var(--white);
-}
+  width: 100vw;
+  height: 12vh;
+  position: fixed;
+  background: linear-gradient(to bottom, #6c6eec, #5c5edc);
+  color: #ffffff;
+  letter-spacing: 2px; }
+  header svg {
+    display: inline-block;
+    width: 14vw;
+    margin-top: -14px; }
+  header h1 {
+    display: inline-block;
+    margin: 0 10px;
+    padding: 30px 0 0 50px;
+    vertical-align: top; }
+
 aside {
-	background-color: var(--purple-dark);
-	width: 16vw;
-}
+  display: inline-block;
+  width: calc(16vw - 20px);
+  height: 88vh;
+  position: fixed;
+  top: 12vh;
+  background-color: #6c6eec;
+  vertical-align: top; }
+  aside ul {
+    list-style-type: none;
+    margin-bottom: 320px; }
+    aside ul li {
+      display: block;
+      margin-left: 0;
+      text-align: center; }
+      aside ul li:hover {
+        background-color: rgba(255, 255, 255, 0.5); }
+      aside ul li a {
+        display: block;
+        width: 100%;
+        text-decoration: none;
+        color: black;
+        font-weight: bold; }
+  aside p {
+    text-align: center;
+    color: #ffffff; }
+    aside p a {
+      text-decoration: none;
+      color: #ffffff; }
+
 section {
-	width: 84vw;
-}
-section table {
-	width: 100%;
-}
-footer {
-	width: 100vw;
-	height: 4vh;
-	background-color: var(--purple);
-	color: var(--white);
-}
+  display: inline-block;
+  width: calc(84vw - 20px);
+  vertical-align: top;
+  margin-top: calc(12vh + 10px);
+  margin-left: calc(16vw + 10px); }
+  section table {
+    width: 100%; }
+    section table th {
+      background-color: #dddddd; }
+    section table td {
+      background-color: #f8f8f8; }
+      section table td.id {
+        text-align: right; }
+      section table td.edit, section table td.delete {
+        width: 32px; }
+        section table td.edit a, section table td.delete a {
+          display: block;
+          width: 100%; }
+          section table td.edit a svg, section table td.delete a svg {
+            width: 24px;
+            height: 24px;
+            padding: 0; }
+            section table td.edit a svg path, section table td.delete a svg path {
+              fill: #6c6eec; }
+          section table td.edit a:hover path, section table td.delete a:hover path {
+            fill: #5c5edc; }
+  section form table td:nth-child(1) {
+    width: 16%;
+    text-align: right;
+    vertical-align: top; }
+  section form table td:nth-child(2) {
+    width: 84%;
+    text-align: left; }
+    section form table td:nth-child(2) *:not([type=checkbox]) {
+      width: 100%;
+      border: 1px solid #dddddd;
+      box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.05) inset; }
+  section form textarea {
+    height: 200px; }
+    section form textarea.rich-text {
+      height: 400px; }
+  section form button[type=submit] {
+    background: none;
+    width: 64px;
+    border: 0;
+    cursor: pointer; }
+    section form button[type=submit] svg {
+      width: 48px;
+      height: 48px;
+      padding: 0; }
+      section form button[type=submit] svg path {
+        fill: #6c6eec; }
+    section form button[type=submit]:hover path {
+      fill: #5c5edc; }
+
+/*# sourceMappingURL=styles.css.map */

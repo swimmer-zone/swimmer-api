@@ -8,6 +8,83 @@ use Swimmer\Utils\Getid3\Getid3;
 class Track extends AbstractModel implements ModelInterface
 {
 	protected $table = 'tracks';
+    public $fields = [
+        'filename' => [
+            'type'     => 'varchar',
+            'required' => true,
+            'field'    => 'file'
+        ],
+        'playtime_string' => [
+            'type'     => 'varchar',
+            'required' => true,
+            'field'    => 'text',
+            'hide'     => true
+        ],
+        'playtime_seconds' => [
+            'type'     => 'varchar',
+            'required' => true,
+            'field'    => 'text'
+        ],
+        'title' => [
+            'type'     => 'varchar',
+            'required' => true,
+            'field'    => 'text'
+        ],
+        'file' => [
+            'type'     => 'varchar',
+            'required' => true,
+            'field'    => 'text',
+            'hide'     => true
+        ],
+        'sample_rate' => [
+            'type'     => 'varchar',
+            'required' => true,
+            'field'    => 'text',
+            'hide'     => true
+        ],
+        'tracknumber' => [
+            'type'     => 'varchar',
+            'required' => true,
+            'field'    => 'text'
+        ],
+        'artist' => [
+            'type'     => 'varchar',
+            'required' => true,
+            'field'    => 'text'
+        ],
+        'bpm' => [
+            'type'     => 'int',
+            'required' => true,
+            'field'    => 'number'
+        ],
+        'albumartist' => [
+            'type'     => 'varchar',
+            'required' => true,
+            'field'    => 'text',
+            'hide'     => true
+        ],
+        'album' => [
+            'type'     => 'varchar',
+            'required' => true,
+            'field'    => 'text'
+        ],
+        'genre' => [
+            'type'     => 'varchar',
+            'required' => true,
+            'field'    => 'text'
+        ],
+        'comment' => [
+            'type'     => 'text',
+            'required' => true,
+            'field'    => 'textarea'
+        ],
+        'date' => [
+            'type'     => 'varchar',
+            'required' => true,
+            'field'    => 'text',
+            'hide'     => true
+        ]
+    ];
 
 	/**
 	 * @inheritDoc
